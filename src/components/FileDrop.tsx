@@ -1,11 +1,12 @@
-import { List, Paper } from "@mui/material";
+import { InsertDriveFile } from "@mui/icons-material";
+import { List, ListItem, ListItemIcon, ListItemText, Paper } from "@mui/material";
 import React from "react"
 import Dropzone from "react-dropzone";
 import { Controller } from "react-hook-form";
 
-// type FormValues = {
-//   ReactDatepicker: string;
-// } 
+type FormValues = {
+  getRootProps: any;
+} 
 
 const FileDrop = ({control, name}:any) => {
   
@@ -18,14 +19,24 @@ const FileDrop = ({control, name}:any) => {
     field: { onChange, onBlur, value }
   })=>{return <>
     <Dropzone onDrop={onChange}>
-    {({ getRootProps, getInputProps})=>{
+    {({ getRootProps, getInputProps} )=>{
       return (
-      <Paper>
-        {...getRootProps()}
+      <Paper variant="outlined" {...getRootProps()}>
+        <input {...getInputProps()} name={name} onBlur={onBlur}/>
+        <p>Drop files here</p>
       </Paper>)
     }}
     </Dropzone>
-    <List />
+    <List>
+      {value.map((f: any, i: number)=>(
+        <ListItem key={Date.now()}>
+          <ListItemIcon>
+            <InsertDriveFile/>
+          </ListItemIcon>
+          <ListItemText primary={f.name} secondary={f.size + "kb"}/>
+        </ListItem>
+      ))}
+    </List>
     </>
   }}
   />

@@ -22,5 +22,5 @@ export interface IDefaultComponent {
 export interface IFormComponent {
   props?: any,
   children?: ReactNode,
-  onSubmit: (e: React.FormEvent) => any
+  onSubmit?: (e: React.FormEvent) => any
 }
