@@ -5,12 +5,14 @@ import FirstStepPage from './pages/FirstStepPage/FirstStepPage';
 import FourthStepPage from './pages/FourthStepPage/FourthStepPage';
 import SecondStepPage from './pages/SecondStepPage/SecondStepPage';
 import ThirdStepPage from './pages/ThirdStepPage/ThirdStepPage';
-import FormState from './store/FormState';
+import FormState from './store/FormStore';
+import {Header} from './components/Header';
 
 function App() {
   console.log(FormState)
   return ( 
   <>
+  <Header/>
   <BrowserRouter>
   <Switch>
   <Route exact path="/" component={FirstStepPage}/>
