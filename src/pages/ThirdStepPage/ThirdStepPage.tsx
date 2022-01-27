@@ -1,11 +1,7 @@
 import React from 'react';
 
 const ThirdStepPage = () => {
-  return (
-    <div>
-      
-    </div>
-  );
+  return (null);
 }
 
 export default ThirdStepPage;
