@@ -1,5 +1,6 @@
 import { Checkbox, FormControlLabel, Typography } from '@mui/material';
 import parsePhoneNumberFromString from 'libphonenumber-js';
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
@@ -7,6 +8,7 @@ import { Form } from '../../components/Form';
 import { Input } from '../../components/Input';
 import { MainContainer } from '../../components/MainContainer';
 import { PrimaryButton } from '../../components/PrimaryButton';
+import FormStore from '../../store/FormStore';
 
 
 interface IUseForm{
@@ -15,7 +17,7 @@ interface IUseForm{
   formState: any
 }
 
-const SecondStepPage = () => {
+const SecondStepPage = observer(() => {
   const { register, handleSubmit, formState: { errors }, watch } = useForm({
     mode: "onBlur",
   })
@@ -24,8 +26,9 @@ const SecondStepPage = () => {
   const history = useHistory()
   
   const onSubmit = (data: any) => {
-    console.log(data)
+    FormStore.setData(data);
     history.push('/step3')
+    console.log(FormStore.data)
   }
 
   const hasPhone = watch("hasPhone")
@@ -85,6 +88,6 @@ const SecondStepPage = () => {
       </Form>
     </MainContainer>
   );
-}
+})
 
 export default SecondStepPage;
