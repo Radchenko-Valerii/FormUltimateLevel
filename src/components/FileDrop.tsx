@@ -33,7 +33,7 @@ const FileDrop = ({control, name}:any) => {
           <ListItemIcon>
             <InsertDriveFile/>
           </ListItemIcon>
-          <ListItemText primary={f.name} secondary={f.size + "kb"}/>
+          <ListItemText primary={f.name} secondary={f.size + " b"}/>
         </ListItem>
       ))}
     </List>
